@@ -20,17 +20,17 @@ class InitUsers:
     password = "password"
 
 
-class InitUrls:
-    """Pages"""
+class PagesPath:
+    """Pages paths"""
 
-    login = "https://app.fluxday.io/users/sign_in"
-    dashboard = "https://app.fluxday.io/"
-    tasks = "https://app.fluxday.io/tasks"
-    departsments = "https://app.fluxday.io/projects"
-    team = "https://app.fluxday.io/teams"
-    users = "https://app.fluxday.io/users"
-    okr = "https://app.fluxday.io/okrs"
-    reports = "https://app.fluxday.io/worklogs"
-    oauth_applications = "https://app.fluxday.io/oauth_applications"
-    admin_user = "https://app.fluxday.io/users/FT1"
-    logout = "https://app.fluxday.io/users/sign_out"
+    login = "/users/sign_in"
+    dashboard = "/"
+    tasks = "/tasks"
+    departsments = "/projects"
+    team = "/teams"
+    users = "/users"
+    okr = "/okrs"
+    reports = "/worklogs"
+    oauth_applications = "/oauth_applications"
+    admin_user = "/users/FT1"
+    logout = "/users/sign_out"
