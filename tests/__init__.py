@@ -22,7 +22,7 @@ class SeleniumTestBase(unittest.TestCase):
             options.add_argument('--disable-translate')
             options.add_argument('--ignore-gpu-blacklist')
             options.add_argument('--no-sandbox')
-            driver = webdriver.Chrome(chrome_options=options)
+            driver = webdriver.Chrome(options=options)
         return driver
 
     def _get_desired_browser_type(self):
