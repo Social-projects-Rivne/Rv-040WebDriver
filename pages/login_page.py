@@ -1,26 +1,26 @@
 """Login page"""
-
-from constants.constants import InitUrls
-from locators.login_page_locators import LoginPageLocators
+from constants.constants import PagesPath
 from pages.base_page import BasePage
+from ui.button import Button
+from ui.text_box import TextBox
+from locators.login_page_locators import LoginPageLocators
+from util.utils import get_full_url
 
 
 class LoginPage(BasePage):
     """Login page action methods come here."""
 
-    def __init__(self):
-        """Initialize"""
-        super().__init__()
-        self.driver.get(InitUrls.login)
-        self.login_button = self.driver.find_element(LoginPageLocators.login_button[0],
-                                                     LoginPageLocators.login_button[1])
-        self.email_field = self.driver.find_element(LoginPageLocators.email[0],
-                                                    LoginPageLocators.email[1])
-        self.password_field = self.driver.find_element(LoginPageLocators.password[0],
-                                                       LoginPageLocators.password[1])
+    def __init__(self, browser, base_url):
+        """Initialize Login Page"""
+        super().__init__(browser)
+        self.base_url = base_url
+        self.email_box = TextBox(self.browser, LoginPageLocators.login_textbox_locator)
+        self.password_box = TextBox(self.browser, LoginPageLocators.password_textbox_locator)
+        self.login_button = Button(self.browser, LoginPageLocators.login_button_locator)
 
     def login(self, email, password):
-        """Send keys"""
-        self.email_field.send_keys(email)
-        self.password_field.send_keys(password)
+        """Navigate to Login Page and do login"""
+        self.browser.go_to_url(get_full_url(self.base_url, PagesPath.login))
+        self.email_box.send_keys(email)
+        self.password_box.send_keys(password)
         self.login_button.click()
