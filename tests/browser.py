@@ -9,3 +9,6 @@ class Browser:
 
     def get_driver(self):
         return self._driver
+
+    def find_element(self, by, selector):
+        return self._driver.find_element(by, selector)
