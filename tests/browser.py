@@ -1,11 +1,20 @@
+"""Browser"""
+
 
 class Browser:
+    """Class browser"""
 
     def __init__(self, driver):
-        self._driver = driver
+        """Initialize driver"""
+        self.driver = driver
 
     def go_to_url(self, url):
-        self._driver.get(url)
+        """Navigate to url"""
+        self.driver.get(url)
 
     def get_driver(self):
-        return self._driver
+        """Get driver for browser"""
+        return self.driver
+
+    def find_element(self, by, selector):
+        return self.driver.find_element(by, selector)

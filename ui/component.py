@@ -1,9 +1,9 @@
 
 class Component:
 
-    def __init__(self, driver, selector):
-        self.driver = driver
+    def __init__(self, browser, selector):
+        self.browser = browser
         self.selector = selector
 
     def get_element(self):
-        return self.driver.find_element(*self.selector)
+        return self.browser.find_element(*self.selector)

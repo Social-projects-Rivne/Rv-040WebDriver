@@ -1,19 +1,27 @@
-import unittest
+"""Initialize main functional"""
 
 import os
+import unittest
+
 from selenium import webdriver
+
 from pages.login_page import LoginPage
+from pages.okr_page import OkrPage
 from tests.browser import Browser
 
 
 class SeleniumTestBase(unittest.TestCase):
+    """Main class for testing"""
 
     def setUp(self):
+        """Initialize browser, base_url, pages"""
         self.browser = Browser(self._get_driver())
         self.base_url = self._get_base_url()
         self.login_page = LoginPage(self.browser, self.base_url)
+        self.okr_page = OkrPage(self.browser, self.base_url)
 
     def _get_driver(self):
+        """Get web driver"""
         if self._get_desired_browser_type() == 'firefox':
             driver = webdriver.Firefox()
 
@@ -22,12 +30,15 @@ class SeleniumTestBase(unittest.TestCase):
             options.add_argument('--disable-translate')
             options.add_argument('--ignore-gpu-blacklist')
             options.add_argument('--no-sandbox')
-            driver = webdriver.Chrome(chrome_options=options)
+            driver = webdriver.Chrome(options=options)
         return driver
 
-    def _get_desired_browser_type(self):
+    @staticmethod
+    def _get_desired_browser_type():
+        """Get browser type. Chrome default"""
         return os.environ.get('BROWSER')
 
-
-    def _get_base_url(self):
+    @staticmethod
+    def _get_base_url():
+        """Get base ulr"""
         return os.environ.get('URL', 'https://app.fluxday.io')
