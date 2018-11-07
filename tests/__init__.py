@@ -20,11 +20,14 @@ class SeleniumTestBase(unittest.TestCase):
         self.login_page = LoginPage(self.browser, self.base_url)
         self.okr_page = OkrPage(self.browser, self.base_url)
 
+    def tearDown(self):
+        """Close driver"""
+        self.browser.driver.close()
+
     def _get_driver(self):
         """Get web driver"""
         if self._get_desired_browser_type() == 'firefox':
             driver = webdriver.Firefox()
-
         else:
             options = webdriver.ChromeOptions()
             options.add_argument('--disable-translate')

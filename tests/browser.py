@@ -6,6 +6,7 @@ class Browser:
 
     def __init__(self, driver):
         """Initialize driver"""
+        driver.implicitly_wait(30)
         self.driver = driver
 
     def go_to_url(self, url):
@@ -17,4 +18,5 @@ class Browser:
         return self.driver
 
     def find_element(self, by, selector):
+        """Find element by selector"""
         return self.driver.find_element(by, selector)

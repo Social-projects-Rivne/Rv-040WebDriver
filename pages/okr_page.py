@@ -1,10 +1,10 @@
 """Okr page"""
 
 from constants.constants import PagesPath
+from locators.okr_page_locators import OkrPageLocators
 from pages.base_page import BasePage
 from ui.button import Button
 from ui.text_box import TextBox
-from locators.okr_page_locators import OkrPageLocators
 from util.utils import get_full_url
 
 
@@ -15,25 +15,50 @@ class OkrPage(BasePage):
         """Initialize OKR Page"""
         super().__init__(browser)
         self.base_url = (get_full_url(base_url, PagesPath.okr))
-        self.okr_button = Button(self.browser.driver, OkrPageLocators.okr_button_locator)
-        self.new_okr_button = Button(self.browser.driver, OkrPageLocators.new_okr_button_locator)
-        self.okr_name = TextBox(self.browser.driver, OkrPageLocators.okr_name_textbox_locator)
-        self.okr_start_date = Button(self.browser.driver, OkrPageLocators.okr_start_date_textbox_locator)
-        self.okr_end_date = Button(self.browser.driver, OkrPageLocators.okr_end_date_textbox_locator)
 
-    def navigate_okr(self):
-        """Navigate okr page"""
+        self.okr_button = Button(self.browser.driver,
+                                 OkrPageLocators.okr_button_locator)
+        self.okr_new_button = Button(self.browser.driver,
+                                     OkrPageLocators.okr_new_button_locator)
+        self.okr_name = TextBox(self.browser.driver,
+                                OkrPageLocators.okr_name_textbox_locator)
+        self.okr_start_date_home_button = Button(self.browser.driver,
+                                                 OkrPageLocators.okr_start_date_home_button_locator)
+        self.okr_start_date_button1 = Button(self.browser.driver,
+                                             OkrPageLocators.okr_start_date_button1_locator)
+        self.okr_start_date_button2 = Button(self.browser.driver,
+                                             OkrPageLocators.okr_start_date_button2_locator)
+        self.okr_end_date_home_button = Button(self.browser.driver,
+                                               OkrPageLocators.okr_end_date_home_button_locator)
+        self.okr_end_date_button1 = Button(self.browser.driver,
+                                           OkrPageLocators.okr_end_date_button1_locator)
+        self.okr_end_date_button2 = Button(self.browser.driver,
+                                           OkrPageLocators.okr_end_date_button2_locator)
+        self.okr_objective_textbox = TextBox(self.browser.driver,
+                                             OkrPageLocators.okr_objective_textbox_locator)
+        self.okr_objective_key1_textbox = TextBox(self.browser.driver,
+                                                  OkrPageLocators.okr_objective_key1_textbox_locator)
+        self.okr_objective_key2_textbox = TextBox(self.browser.driver,
+                                                  OkrPageLocators.okr_objective_key2_textbox_locator)
+        self.okr_save_button = Button(self.browser.driver,
+                                      OkrPageLocators.okr_save_button_locator)
+
+    def add_okr(self, name, objective, obj_key1, obj_key2):
+        """Add OKR"""
         self.okr_button.click()
-
-    def new_okr(self):
-        """New OKR"""
-        self.new_okr_button.click()
-
-    def set_okr_name(self, name):
+        self.okr_new_button.click()
         self.okr_name.send_keys(name)
 
-    def set_okr_dates(self):
-        # self.okr_start_date.send_keys(start_date)
-        # self.okr_end_date.send_keys(end_date)
-        self.okr_start_date.click()
-        self.okr_end_date.click()
+        self.okr_start_date_button1.click()
+        self.okr_start_date_home_button.click()
+        self.okr_start_date_button2.click()
+
+        self.okr_end_date_button1.click()
+        self.okr_end_date_home_button.click()
+        self.okr_end_date_button2.click()
+
+        self.okr_objective_textbox.send_keys(objective)
+        self.okr_objective_key1_textbox.send_keys(obj_key1)
+        self.okr_objective_key2_textbox.send_keys(obj_key2)
+
+        self.okr_save_button.click()

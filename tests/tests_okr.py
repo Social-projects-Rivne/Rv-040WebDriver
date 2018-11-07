@@ -1,8 +1,5 @@
 """Tests for okr page"""
 
-import time
-from datetime import datetime
-
 from constants.constants import InitUsers
 from tests import SeleniumTestBase
 
@@ -13,13 +10,10 @@ class OkrTests(SeleniumTestBase):
     def setUp(self):
         """Initialize login page"""
         super().setUp()
+        self.login_page.login(InitUsers.admin_email, InitUsers.password)
 
-    def test_okr(self):
-        """Incorrect login test with fake user and password (negative)"""
-        self.login_page.login(InitUsers.lead_email, InitUsers.password)
-        self.okr_page.navigate_okr()
-        time.sleep(1)
-        self.okr_page.new_okr()
-        self.okr_page.set_okr_name("test")
-        self.okr_page.set_okr_dates()
-        time.sleep(3)
+    def test_add_okr(self):
+        """Add new OKR. If OKR created test pass (positive)"""
+        name = "test"
+        self.okr_page.add_okr(name, "1", "1", "1")
+        self.assertIn(name, self.browser.driver.page_source)
