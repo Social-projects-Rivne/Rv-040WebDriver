@@ -31,6 +31,7 @@ class SeleniumTestBase(unittest.TestCase):
             options.add_argument('--ignore-gpu-blacklist')
             options.add_argument('--no-sandbox')
             driver = webdriver.Chrome(options=options)
+            driver.maximize_window()
         return driver
 
     @staticmethod
