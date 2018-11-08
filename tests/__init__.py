@@ -3,6 +3,7 @@ import unittest
 import os
 from selenium import webdriver
 from pages.login_page import LoginPage
+from pages.dashboard_page import DashboardPage
 from tests.browser import Browser
 
 
@@ -12,6 +13,7 @@ class SeleniumTestBase(unittest.TestCase):
         self.browser = Browser(self._get_driver())
         self.base_url = self._get_base_url()
         self.login_page = LoginPage(self.browser, self.base_url)
+        self.dashboard_page = DashboardPage(self.browser, self.base_url)
 
     def _get_driver(self):
         if self._get_desired_browser_type() == 'firefox':
@@ -23,6 +25,7 @@ class SeleniumTestBase(unittest.TestCase):
             options.add_argument('--ignore-gpu-blacklist')
             options.add_argument('--no-sandbox')
             driver = webdriver.Chrome(options=options)
+            driver.maximize_window()
         return driver
 
     def _get_desired_browser_type(self):
