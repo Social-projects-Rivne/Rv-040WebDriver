@@ -16,3 +16,4 @@ class AddLogTests(SeleniumTestBase):
         self.dashboard_page.navigate_to()
         self.dashboard_page.add_log()
         self.assertTrue(self.dashboard_page.message_window())
+        self.assertTrue(self.dashboard_page.message_window_text())

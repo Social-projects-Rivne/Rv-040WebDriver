@@ -28,3 +28,7 @@ class DashboardPage(BasePage):
     def message_window(self):
         return WebDriverWait(self.browser, 10).until(ec.visibility_of_element_located
                                                      (DashboardPageLocators.message_window_locator))
+
+    def message_window_text(self):
+        return WebDriverWait(self.browser, 10).until(ec.text_to_be_present_in_element
+                                                     (DashboardPageLocators.message_window_locator, "You have no task"))
