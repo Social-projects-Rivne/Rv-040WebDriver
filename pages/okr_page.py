@@ -67,10 +67,12 @@ class OkrPage(BasePage):
         self.okr_save_button.click()
 
     def message_window(self):
+        """javascript message"""
         return WebDriverWait(self.browser.driver, 10).until(ec.visibility_of_element_located
                                                             (OkrPageLocators.okr_message))
 
     def message_window_text(self):
+        """javascript message text"""
         return WebDriverWait(self.browser.driver, 10).until(ec.text_to_be_present_in_element
                                                             (OkrPageLocators.okr_message,
                                                              "Okr was successfully created."))

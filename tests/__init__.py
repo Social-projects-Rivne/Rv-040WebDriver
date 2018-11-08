@@ -2,6 +2,7 @@
 
 import os
 import unittest
+from datetime import datetime
 
 from selenium import webdriver
 
@@ -22,7 +23,16 @@ class SeleniumTestBase(unittest.TestCase):
 
     def tearDown(self):
         """Close driver"""
+        self.screen_shot()
         self.browser.driver.close()
+
+    def screen_shot(self):
+        """Take a Screen-shot of the drive homepage, when it Failed."""
+        for method, error in self._outcome.errors:
+            if error:
+                now = datetime.now()
+                dir_name = os.path.dirname(__file__)
+                self.browser.driver.get_screenshot_as_file(dir_name + "/../screenshots/" + str(method) + str(now) + ".png")
 
     def _get_driver(self):
         """Get web driver"""
