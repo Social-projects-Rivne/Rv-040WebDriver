@@ -4,10 +4,11 @@ from selenium.webdriver.common.by import By
 
 
 class OkrPageLocators:
-    """A class for main page locators. All main page locators should come here"""
+    """A class for okr page locators. All main page locators should come here"""
 
     okr_button_locator = (By.XPATH, "/html/body/div[2]/div[1]/ul[2]/li[6]/a")
-    okr_new_button_locator = (By.CSS_SELECTOR, ".dashed_link")
+    # okr_new_button_locator = (By.CSS_SELECTOR, ".dashed_link")
+    okr_new_button_locator = (By.XPATH, "/html/body/div[2]/div[2]/div[2]/a")
     okr_name_textbox_locator = (By.CSS_SELECTOR, "#okr_name")
     okr_start_date_home_button_locator = (By.CSS_SELECTOR, "body > div:nth-child(3) > div.xdsoft_datepicker.active >"
                                                            " div.xdsoft_mounthpicker > button.xdsoft_today_button")
@@ -22,3 +23,4 @@ class OkrPageLocators:
     okr_save_button_locator = (By.CSS_SELECTOR, "#new_okr > div.small-12.columns.form-action-up > div.right > input")
     okr_approve_button_locator = (By.CSS_SELECTOR, "#pane3 > div > div.right.options > "
                                                    "div > form > div > input.btn.btn-sec")
+    okr_message = (By.CSS_SELECTOR, ".alert-box")

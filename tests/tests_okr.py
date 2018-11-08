@@ -17,3 +17,5 @@ class OkrTests(SeleniumTestBase):
         name = "test"
         self.okr_page.add_okr(name, "1", "1", "1")
         self.assertIn(name, self.browser.driver.page_source)
+        self.assertTrue(self.okr_page.message_window())
+        self.assertTrue(self.okr_page.message_window_text())

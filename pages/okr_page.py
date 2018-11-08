@@ -1,5 +1,8 @@
 """Okr page"""
 
+from selenium.webdriver.support import expected_conditions as ec
+from selenium.webdriver.support.wait import WebDriverWait
+
 from constants.constants import PagesPath
 from locators.okr_page_locators import OkrPageLocators
 from pages.base_page import BasePage
@@ -62,3 +65,12 @@ class OkrPage(BasePage):
         self.okr_objective_key2_textbox.send_keys(obj_key2)
 
         self.okr_save_button.click()
+
+    def message_window(self):
+        return WebDriverWait(self.browser.driver, 10).until(ec.visibility_of_element_located
+                                                            (OkrPageLocators.okr_message))
+
+    def message_window_text(self):
+        return WebDriverWait(self.browser.driver, 10).until(ec.text_to_be_present_in_element
+                                                            (OkrPageLocators.okr_message,
+                                                             "Okr was successfully created."))
