@@ -3,8 +3,12 @@ import unittest
 import os
 from selenium import webdriver
 from pages.login_page import LoginPage
+from pages.users_page import UserPage
 from tests.browser import Browser
-
+from constants.constants import PagesPath
+from ui.button import Button
+from ui.text_box import TextBox
+from util.utils import get_full_url
 
 class SeleniumTestBase(unittest.TestCase):
 
@@ -12,6 +16,7 @@ class SeleniumTestBase(unittest.TestCase):
         self.browser = Browser(self._get_driver())
         self.base_url = self._get_base_url()
         self.login_page = LoginPage(self.browser, self.base_url)
+        self.user_page = UserPage(self.browser, self.user_page)
 
     def _get_driver(self):
         if self._get_desired_browser_type() == 'firefox':
