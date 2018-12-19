@@ -1,12 +1,8 @@
 """ Testing ability to add new user to Fluxday.IO by different users"""
 
 
-import selenium
-from constants.constants import InitUsers, PagesPath
+from constants.constants import InitUsers
 from tests import SeleniumTestBase
-import time
-
-from util.utils import get_full_url
 
 
 class AddUserTests(SeleniumTestBase):
@@ -15,10 +11,12 @@ class AddUserTests(SeleniumTestBase):
     def setUp(self):
 
         super().setUp()
+        self.login_page.login(InitUsers.admin_email, InitUsers.password)
 
     def test_new_user_by_admin(self):
         """ability to add new user by admin"""
-
-        self.login_page.login(InitUsers.admin_email, InitUsers.password)
-        self.browser.go_to_url(get_full_url(self.base_url, PagesPath.users))
-        time.sleep(7)
+        new_user = "SuperUser"
+        self.users_page.add_user(new_user, "newname", "NewEmail@email.com", 'code', "password", "password")
+        self.assertIn(new_user, self.browser.driver.page_source)
+        self.assertTrue(self.users_page.message_window())
+        self.assertTrue(self.users_page.message_window_text())
