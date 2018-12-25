@@ -1,4 +1,5 @@
 """Login page"""
+
 from constants.constants import PagesPath
 from pages.base_page import BasePage
 from ui.button import Button
@@ -14,9 +15,9 @@ class LoginPage(BasePage):
         """Initialize Login Page"""
         super().__init__(browser)
         self.base_url = base_url
-        self.email_box = TextBox(self.browser, LoginPageLocators.login_textbox_locator)
-        self.password_box = TextBox(self.browser, LoginPageLocators.password_textbox_locator)
-        self.login_button = Button(self.browser, LoginPageLocators.login_button_locator)
+        self.email_box = TextBox(self.browser.driver, LoginPageLocators.login_textbox_locator)
+        self.password_box = TextBox(self.browser.driver, LoginPageLocators.password_textbox_locator)
+        self.login_button = Button(self.browser.driver, LoginPageLocators.login_button_locator)
 
     def login(self, email, password):
         """Navigate to Login Page and do login"""
