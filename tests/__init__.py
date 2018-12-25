@@ -7,6 +7,7 @@ from datetime import datetime
 from selenium import webdriver
 
 from pages.login_page import LoginPage
+from pages.dashboard_page import DashboardPage
 from pages.users_page import UserPage
 from pages.my_tasks_page import TaskPage
 from pages.okr_page import OkrPage
@@ -21,10 +22,10 @@ class SeleniumTestBase(unittest.TestCase):
         self.browser = Browser(self._get_driver())
         self.base_url = self._get_base_url()
         self.login_page = LoginPage(self.browser, self.base_url)
+        self.dashboard_page = DashboardPage(self.browser, self.base_url)
         self.users_page = UserPage(self.browser, self.base_url)
         self.okr_page = OkrPage(self.browser, self.base_url)
         self.task_page = TaskPage(self.browser, self.base_url)
-
 
     def tearDown(self):
         """Close driver"""
