@@ -7,7 +7,6 @@ class OkrPageLocators:
     """A class for okr page locators. All main page locators should come here"""
 
     okr_button_locator = (By.XPATH, "/html/body/div[2]/div[1]/ul[2]/li[6]/a")
-    # okr_new_button_locator = (By.CSS_SELECTOR, ".dashed_link")
     okr_new_button_locator = (By.XPATH, "/html/body/div[2]/div[2]/div[2]/a")
     okr_name_textbox_locator = (By.CSS_SELECTOR, "#okr_name")
     okr_start_date_home_button_locator = (By.CSS_SELECTOR, "body > div:nth-child(3) > div.xdsoft_datepicker.active >"

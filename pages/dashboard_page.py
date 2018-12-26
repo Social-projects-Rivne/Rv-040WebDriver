@@ -1,10 +1,11 @@
 """Dashboard page"""
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
+from selenium.webdriver.support.ui import WebDriverWait
+
 from constants.constants import PagesPath
+from locators.dashboard_page_locators import DashboardPageLocators
 from pages.base_page import BasePage
 from ui.button import Button
-from locators.dashboard_page_locators import DashboardPageLocators
 from util.utils import get_full_url
 
 

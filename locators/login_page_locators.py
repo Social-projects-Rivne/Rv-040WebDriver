@@ -9,3 +9,4 @@ class LoginPageLocators:
     login_button_locator = (By.CLASS_NAME, 'btn-login')
     login_textbox_locator = (By.ID, 'user_email')
     password_textbox_locator = (By.ID, 'user_password')
+    message_locator = (By.XPATH, '/html/body/script')

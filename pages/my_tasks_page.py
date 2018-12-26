@@ -1,5 +1,6 @@
 """Task page"""
 
+
 from constants.constants import PagesPath
 from locators.my_tasks_page_lockators import TaskPageLocators
 from pages.base_page import BasePage
@@ -16,30 +17,28 @@ class TaskPage(BasePage):
         super().__init__(browser)
         self.base_url = (get_full_url(base_url, PagesPath.tasks))
 
-        self.task_button = Button(self.browser.driver,
+        self.task_button = Button(self.browser,
                                   TaskPageLocators.task_button_locator)
 
-        self.task_title = TextBox(self.browser.driver,
+        self.task_title = TextBox(self.browser,
                                   TaskPageLocators.task_title_locator)
 
-        self.task_description = TextBox(self.browser.driver,
+        self.task_description = TextBox(self.browser,
                                         TaskPageLocators.task_description_locator)
 
-        self.task_team = Button(self.browser.driver,
+        self.task_team = Button(self.browser,
                                 TaskPageLocators.task_team_locator)
 
-        self.task_team_support = Button(self.browser.driver,
+        self.task_team_support = Button(self.browser,
                                         TaskPageLocators.task_team_locator_support)
 
-        self.task_priority = Button(self.browser.driver,
-                                        TaskPageLocators.task_priority_locator)
-        self.task_priority_high = Button(self.browser.driver,
-                                        TaskPageLocators.task_priority_high_locator)
+        self.task_priority = Button(self.browser,
+                                    TaskPageLocators.task_priority_locator)
+        self.task_priority_high = Button(self.browser,
+                                         TaskPageLocators.task_priority_high_locator)
 
-        self.task_create_new_button = Button(self.browser.driver,
-                                        TaskPageLocators.task_create_button_locator)
-
-
+        self.task_create_new_button = Button(self.browser,
+                                             TaskPageLocators.task_create_button_locator)
 
     def add_task(self, title, description):
         """Add task"""

@@ -19,31 +19,31 @@ class OkrPage(BasePage):
         super().__init__(browser)
         self.base_url = (get_full_url(base_url, PagesPath.okr))
 
-        self.okr_button = Button(self.browser.driver,
+        self.okr_button = Button(self.browser,
                                  OkrPageLocators.okr_button_locator)
-        self.okr_new_button = Button(self.browser.driver,
+        self.okr_new_button = Button(self.browser,
                                      OkrPageLocators.okr_new_button_locator)
-        self.okr_name = TextBox(self.browser.driver,
+        self.okr_name = TextBox(self.browser,
                                 OkrPageLocators.okr_name_textbox_locator)
-        self.okr_start_date_home_button = Button(self.browser.driver,
+        self.okr_start_date_home_button = Button(self.browser,
                                                  OkrPageLocators.okr_start_date_home_button_locator)
-        self.okr_start_date_button1 = Button(self.browser.driver,
+        self.okr_start_date_button1 = Button(self.browser,
                                              OkrPageLocators.okr_start_date_button1_locator)
-        self.okr_start_date_button2 = Button(self.browser.driver,
+        self.okr_start_date_button2 = Button(self.browser,
                                              OkrPageLocators.okr_start_date_button2_locator)
-        self.okr_end_date_home_button = Button(self.browser.driver,
+        self.okr_end_date_home_button = Button(self.browser,
                                                OkrPageLocators.okr_end_date_home_button_locator)
-        self.okr_end_date_button1 = Button(self.browser.driver,
+        self.okr_end_date_button1 = Button(self.browser,
                                            OkrPageLocators.okr_end_date_button1_locator)
-        self.okr_end_date_button2 = Button(self.browser.driver,
+        self.okr_end_date_button2 = Button(self.browser,
                                            OkrPageLocators.okr_end_date_button2_locator)
-        self.okr_objective_textbox = TextBox(self.browser.driver,
+        self.okr_objective_textbox = TextBox(self.browser,
                                              OkrPageLocators.okr_objective_textbox_locator)
-        self.okr_objective_key1_textbox = TextBox(self.browser.driver,
+        self.okr_objective_key1_textbox = TextBox(self.browser,
                                                   OkrPageLocators.okr_objective_key1_textbox_locator)
-        self.okr_objective_key2_textbox = TextBox(self.browser.driver,
+        self.okr_objective_key2_textbox = TextBox(self.browser,
                                                   OkrPageLocators.okr_objective_key2_textbox_locator)
-        self.okr_save_button = Button(self.browser.driver,
+        self.okr_save_button = Button(self.browser,
                                       OkrPageLocators.okr_save_button_locator)
 
     def add_okr(self, name, objective, obj_key1, obj_key2):
@@ -53,10 +53,14 @@ class OkrPage(BasePage):
         self.okr_name.send_keys(name)
 
         self.okr_start_date_button1.click()
+        WebDriverWait(self.browser, 10).until(ec.element_to_be_clickable
+                                              (OkrPageLocators.okr_start_date_home_button_locator))
         self.okr_start_date_home_button.click()
         self.okr_start_date_button2.click()
 
         self.okr_end_date_button1.click()
+        WebDriverWait(self.browser, 10).until(ec.element_to_be_clickable
+                                              (OkrPageLocators.okr_end_date_home_button_locator))
         self.okr_end_date_home_button.click()
         self.okr_end_date_button2.click()
 
@@ -68,11 +72,11 @@ class OkrPage(BasePage):
 
     def message_window(self):
         """javascript message"""
-        return WebDriverWait(self.browser.driver, 10).until(ec.visibility_of_element_located
-                                                            (OkrPageLocators.okr_message))
+        return WebDriverWait(self.browser, 10).until(ec.visibility_of_element_located
+                                                     (OkrPageLocators.okr_message))
 
     def message_window_text(self):
         """javascript message text"""
-        return WebDriverWait(self.browser.driver, 10).until(ec.text_to_be_present_in_element
-                                                            (OkrPageLocators.okr_message,
-                                                             "Okr was successfully created."))
+        return WebDriverWait(self.browser, 10).until(ec.text_to_be_present_in_element
+                                                     (OkrPageLocators.okr_message,
+                                                      "Okr was successfully created."))

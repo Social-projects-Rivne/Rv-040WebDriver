@@ -16,7 +16,7 @@ class AddUserTests(SeleniumTestBase):
     def test_new_user_by_admin(self):
         """ability to add new user by admin"""
         new_user = "SuperUser"
-        self.users_page.add_user(new_user, "newname", "NewEmail@email.com", 'code', "password", "password")
+        self.users_page.add_user(new_user, "newname", "NewEmail@email3423.com", 'code', "password", "password")
         self.assertIn(new_user, self.browser.driver.page_source)
         self.assertTrue(self.users_page.message_window())
         self.assertTrue(self.users_page.message_window_text())

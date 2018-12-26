@@ -12,4 +12,5 @@ class LoginTests(SeleniumTestBase):
 
     def test_login_incorrect_email_and_password(self):
         """Incorrect login test with fake user and password (negative)"""
-        self.login_page.login("admin@fluxday.io", "password")
+        self.login_page.login("test@fluxday.io", "password")
+        self.assertTrue(self.login_page.message())
